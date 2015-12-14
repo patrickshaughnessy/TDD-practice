@@ -11,20 +11,30 @@ var file = path.format({
     ext : ".db",
     name : "file"
 });
-var exists = fs.existsSync(file);
 
-
-if(!exists) {
-  console.log("Creating DB file.");
-  fs.openSync(file, "w");
-}
-
+// var appDir = path.dirname(require.main.filename);
+//
+// console.log('appDir', appDir);
+//
+// var file = path.join(__dirname, '/data/books.db')
+// var exists = fs.existsSync(file);
+//
+// console.log('in routes, the filename is', __filename);
+// console.log('in routes, the dirname is', __dirname);
+// console.log('in routes, the file is', file);
+// console.log('exists', exists);
+//
+// if(!exists) {
+//   console.log("Creating DB file.");
+//   fs.openSync(file, "w");
+// }
+//
 var sqlite3 = require("sqlite3").verbose();
 var db = new sqlite3.Database(file);
-
-if(!exists) {
-  db.run("CREATE TABLE books (title, author)");
-}
+//
+// if(!exists) {
+//   db.run("CREATE TABLE books (title, author)");
+// }
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
